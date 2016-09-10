@@ -1,9 +1,9 @@
 /// <reference path="../typings/jest/jest.d.ts" />
 
 describe('TypeScript', function() {
-  xdescribe('let', function() {
+  describe('let', function() {
     it('use instead of var', function() {
-      let x;
+      let x = 1;
       expect(x).toEqual(1);
     });
 
@@ -12,7 +12,7 @@ describe('TypeScript', function() {
       if (true) {
         let x = 1;
       }
-      expect(x).toEqual(1);
+      expect(x).toEqual(2);
     });
   });
 
