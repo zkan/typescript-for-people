@@ -16,7 +16,7 @@ class Captcha {
     return number_text[num];
   }
 
-  generate = function(pattern, left, right, operator: number) {
+  generate = function(pattern: number, left: number, right: number, operator: number) {
     right = this.convert_number_to_text(right);
     let converted_operator = "+";
     if (operator === 2) {
@@ -25,7 +25,13 @@ class Captcha {
     else if (operator === 3) {
       converted_operator = "*";
     }
-    return `${left} ${converted_operator} ${right}`;
+
+    if (pattern === 1) {
+      return `${left} ${converted_operator} ${right}`;
+    }
+    else if (pattern === 2) {
+      return `${right} ${converted_operator} ${left}`;
+    }
   };
 };
 
@@ -75,6 +81,13 @@ describe("Captcha", function() {
     it("should return 5 * Three when left is 5, right is 3, and operator is 3", function() {
       let captcha = new Captcha();
       expect(captcha.generate(1, 5, 3, 3)).toEqual("5 * Three");
+    });
+  });
+
+  describe("second pattern", function() {
+    it("should return Three * 5 when left is 5, right is 3, and operator is 3", function() {
+      let captcha = new Captcha();
+      expect(captcha.generate(2, 5, 3, 3)).toEqual("Three * 5");
     });
   });
 });
