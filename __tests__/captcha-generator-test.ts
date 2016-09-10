@@ -18,7 +18,7 @@ class Captcha {
 
   generate = function(pattern, left, right, operator) {
     right = this.convert_number_to_text(right);
-    return `1 + ${right}`;
+    return `${left} + ${right}`;
   };
 };
 
@@ -53,6 +53,11 @@ describe("Captcha", function() {
     it("should return 1 + Three when left is 1, right is 3, and operator is 1", function() {
       let captcha = new Captcha();
       expect(captcha.generate(1, 1, 3, 1)).toEqual("1 + Three");
+    });
+
+    it("should return 5 + Three when left is 5, right is 3, and operator is 1", function() {
+      let captcha = new Captcha();
+      expect(captcha.generate(1, 5, 3, 1)).toEqual("5 + Three");
     });
   });
 });
