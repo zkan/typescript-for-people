@@ -1,7 +1,7 @@
 /// <reference path="../typings/jest/jest.d.ts" />
 
 class Captcha {
-  convert_number_to_number_text = function(num: number) {
+  convert_number_to_number_text(num: number) {
     let number_text = {
       1: "One",
       2: "Two",
@@ -16,7 +16,7 @@ class Captcha {
     return number_text[num];
   }
 
-  convert_operator_to_operator_text = function(num: number) {
+  convert_operator_to_operator_text(num: number) {
     let operator_text = {
       1: "+",
       2: "-",
@@ -25,7 +25,7 @@ class Captcha {
     return operator_text[num];
   }
 
-  generate = function(pattern: number, left: number, right: number, operator: number) {
+  generate(pattern: number, left: number, right: number, operator: number) {
     let converted_right = this.convert_number_to_number_text(right);
     let converted_operator = this.convert_operator_to_operator_text(operator);
 
