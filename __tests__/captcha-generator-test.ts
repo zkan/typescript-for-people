@@ -64,8 +64,8 @@ describe("Captcha", function() {
   });
 
   describe("second pattern", function() {
-    it("should return Three * 5 when left is 5, right is 3, and operator is 3", function() {
-      expect(captcha.generate(2, 5, 3, 3)).toEqual("Three * 5");
+    it("should return Five * 3 when left is 5, right is 3, and operator is 3", function() {
+      expect(captcha.generate(2, 5, 3, 3)).toEqual("Five * 3");
     });
   });
 });

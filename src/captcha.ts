@@ -24,14 +24,19 @@ export class Captcha {
   }
 
   generate(pattern: number, left: number, right: number, operator: number): string {
-    let converted_right = this.convert_number_to_number_text(right);
-    let converted_operator = this.convert_operator_to_operator_text(operator);
+    let convertedOperator = this.convert_operator_to_operator_text(operator);
 
+    let leftOperand;
+    let rightOperand;
     if (pattern === 1) {
-      return `${left} ${converted_operator} ${converted_right}`;
+      leftOperand = left;
+      rightOperand = this.convert_number_to_number_text(right);
     }
     else if (pattern === 2) {
-      return `${converted_right} ${converted_operator} ${left}`;
+      leftOperand = this.convert_number_to_number_text(left);;
+      rightOperand = right
     }
+
+    return `${leftOperand} ${convertedOperator} ${rightOperand}`;
   };
 };
