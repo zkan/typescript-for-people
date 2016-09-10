@@ -1,7 +1,7 @@
 /// <reference path="../typings/jest/jest.d.ts" />
 
 class Captcha {
-  convert_number_to_text = function(num: number) {
+  convert_number_to_number_text = function(num: number) {
     let number_text = {
       1: "One",
       2: "Two",
@@ -16,21 +16,24 @@ class Captcha {
     return number_text[num];
   }
 
+  convert_operator_to_operator_text = function(num: number) {
+    let operator_text = {
+      1: "+",
+      2: "-",
+      3: "*",
+    }
+    return operator_text[num];
+  }
+
   generate = function(pattern: number, left: number, right: number, operator: number) {
-    right = this.convert_number_to_text(right);
-    let converted_operator = "+";
-    if (operator === 2) {
-      converted_operator = "-";
-    }
-    else if (operator === 3) {
-      converted_operator = "*";
-    }
+    let converted_right = this.convert_number_to_number_text(right);
+    let converted_operator = this.convert_operator_to_operator_text(operator);
 
     if (pattern === 1) {
-      return `${left} ${converted_operator} ${right}`;
+      return `${left} ${converted_operator} ${converted_right}`;
     }
     else if (pattern === 2) {
-      return `${right} ${converted_operator} ${left}`;
+      return `${converted_right} ${converted_operator} ${left}`;
     }
   };
 };
@@ -52,7 +55,7 @@ describe("Captcha", function() {
         9: "Nine",
       }
       for (let input = 1; input <= 9; input++) {
-        expect(captcha.convert_number_to_text(input)).toEqual(number_text[input]);
+        expect(captcha.convert_number_to_number_text(input)).toEqual(number_text[input]);
       }
     });
   });
