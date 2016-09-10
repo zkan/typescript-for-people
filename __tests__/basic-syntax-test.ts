@@ -16,10 +16,14 @@ describe('TypeScript', function() {
     });
   });
 
-  xdescribe('const', function() {
+  describe('const', function() {
     it('cannot reassign twice', function() {
       const CONSTANT = 1;
+
+      // If we uncomment the line below, we'll get the compile error
       //CONSTANT = 2;
+
+      expect(CONSTANT).toEqual(1);
     });
   });
 
