@@ -119,7 +119,7 @@ Line 2`;
     });
   });
 
-  xdescribe("union", function() {
+  describe("union", function() {
     function padLeft(value: string, padding: any) {
       if (typeof padding === "number") {
         return Array(padding + 1).join(" ") + value;
@@ -129,6 +129,17 @@ Line 2`;
       }
       throw new Error(`Expected string or number, got "${padding}".`);
     }
+
+    // alternatively, we can define the type to the parameters and remove the exception
+    // this way if we input a value of a different type, we will get the compile error
+//    function padLeft(value: string, padding: number | string) {
+//      if (typeof padding === "number") {
+//        return Array(padding + 1).join(" ") + value;
+//      }
+//      if (typeof padding === "string") {
+//        return padding + value;
+//      }
+//    }
 
     describe("with padLeft example", function() {
       it("should padding 4 space when input padding with type number", function() {
