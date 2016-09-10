@@ -46,6 +46,19 @@ describe("Captcha", function() {
     captcha = new Captcha();
   });
 
+  describe("convert operator to text", function() {
+    it("should return text according to the input", function() {
+      let operator_text = {
+        1: "+",
+        2: "-",
+        3: "*",
+      }
+      for (let input = 1; input <= 3; input++) {
+        expect(captcha.convert_operator_to_operator_text(input)).toEqual(operator_text[input]);
+      }
+    });
+  });
+
   describe("convert number to text", function() {
     it("should return text according to the input", function() {
       let number_text = {
